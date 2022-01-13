@@ -89,7 +89,7 @@ class GameScene extends Phaser.Scene {
       platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
   
       gameState.scoreText = this.add.text(330, 475, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
-      gameState.livesText = this.add.text(10, 475, 'Lives: 100', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+      gameState.livesText = this.add.text(10, 475, 'Lives: 10', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
       let currentPlayer = localStorage.getItem('Player-Name');
       this.add.text(150, 480, `Now Playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#7cfeb3' });
       
@@ -163,7 +163,7 @@ class GameScene extends Phaser.Scene {
           virus.destroy();
           gameState.player.anims.play('hit');
           // virus.disableBody();
-          gameState.lives -= 10;
+          gameState.lives -= 1;
           gameState.livesText.setText(`Lives: ${gameState.lives}`);
         
         if (gameState.lives === 0)

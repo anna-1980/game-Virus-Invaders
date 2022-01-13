@@ -28,7 +28,7 @@ class EndScene extends Phaser.Scene {
         this.scene.stop('EndScene')
         this.scene.start('StartScene')
         gameState.score = 0;
-        gameState.lives = 100;
+        gameState.lives = 10;
         gameState.bestScorePlayer = localStorage.getItem('Best-Player');
         function ifNoCurrentPlayer() {
            addButton.classList.remove(

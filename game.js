@@ -1,6 +1,6 @@
 const gameState = {
     score: 0,
-    lives: 100,
+    lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,
     playerName: localStorage.getItem('Player-Name'),
     bestScorePlayer: localStorage.getItem('Best-Player') 
@@ -10,8 +10,12 @@ const gameState = {
   
   const config = {
     type: Phaser.AUTO,
-    width: 450,
-    height: 500,
+    scale: {
+      width: 450,
+      height: 500,
+      mode: Phaser.Scale.FIT,
+      // autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
     parent:'game',
     backgroundColor: "fec55e",
     physics: {

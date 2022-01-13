@@ -26,17 +26,8 @@ class StartScene extends Phaser.Scene {
       // console.log(`fromGameScene${gameState.playerName}`);
       
       //this is crazy... how does this even work (addButton is ina main.js)
-      addButton.addEventListener('click', (event) => { 
-        this.add.text( 50, 130, `Welcome: ${localStorage.getItem('Player-Name')}`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#feffc0' });   
-        this.add.text( 50, 170, `Avoid Viruses!`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#feffc0' });   
-      });
-      playerName.addEventListener("keyup", (e) => {
-        if (e.key === "Enter") {
-          console.log('new player enter');
-          this.add.text( 50, 130, `Welcome: ${localStorage.getItem('Player-Name')}`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#17639E' });   
-          this.add.text( 50, 170, `Avoid Viruses!`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#17639E' }); 
-        }
-      });
+
+
 
    };
      update(){
