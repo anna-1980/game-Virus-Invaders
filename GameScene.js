@@ -68,7 +68,8 @@ class GameScene extends Phaser.Scene {
 
 //ending the game
     this.time.addEvent({
-      delay: 15000, 
+      // delay: 60000, 
+        delay: 10000,
         loop: false,
       callback: () => {
          
@@ -88,10 +89,10 @@ class GameScene extends Phaser.Scene {
 
       platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
   
-      gameState.scoreText = this.add.text(330, 475, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+      gameState.scoreText = this.add.text(350, 475, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
       gameState.livesText = this.add.text(10, 475, 'Lives: 10', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
       let currentPlayer = localStorage.getItem('Player-Name');
-      this.add.text(150, 480, `Now Playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#7cfeb3' });
+      this.add.text(150, 480, `Now playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#7cfeb3' });
       
       gameState.player = this.physics.add.sprite(225, 440, 'player')
       .setScale(.4)

@@ -5,6 +5,8 @@ class IntroScene extends Phaser.Scene {
     
     preload() {
       this.load.html('nameform', './assets/nameform.html');
+
+   
     }
     
     create() {
@@ -15,6 +17,9 @@ class IntroScene extends Phaser.Scene {
       let names = text.eventNames();
       console.log(nameInput);
   
+    
+
+
       nameInput.addListener('keyup');
       nameInput.on('keyup', function (event) {
               // console.log(event.target);
@@ -67,12 +72,12 @@ class IntroScene extends Phaser.Scene {
               }
       
           });
-        //   this.tweens.add({
-        //       targets: nameInput,
-        //       y: 100,
-        //       duration: 3000,
-        //       ease: 'Power3'
-        //   });
+          this.tweens.add({
+              targets: nameInput,
+              y: 100,
+              duration: 3000,
+              ease: 'Power3'
+          });
     
     }
     
