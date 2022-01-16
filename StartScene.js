@@ -9,6 +9,9 @@ class StartScene extends Phaser.Scene {
   
   create() {
     // this.add.text( 50, 450, `other : ${gameState.playerName}`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#800000' });
+   this.add.text( 50, 150, `Welcome: ${gameState.playerName}`, { fontFamily: 'Georgia', fontSize: '30px', fill: '#feffc0' });
+
+    
     this.add.text( 50, 220, 'Click here to Start the Game', { fontFamily: 'Georgia', fontSize: '25px', fill: '#ff0202' });
 
     this.add.text( 50,  40, `Highest Score: ${gameState.highScore}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#800000' });
