@@ -104,6 +104,18 @@ class GameScene extends Phaser.Scene {
   
       gameState.cursors = this.input.keyboard.createCursorKeys();
   
+      const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+      const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+      
+      left.on('pointerdown', () => {
+        gameState.player.setAccelerationX(-5000);
+        })
+        
+    right.on('pointerdown', () => {
+        gameState.player.setAccelerationX(5000);
+        })
+
+
       const bugs = this.physics.add.group();
   
       const virusList = ['virus1', 'virus2', 'virus3']
