@@ -5,45 +5,44 @@ const addButton = document.querySelector(".addButton");
 
 //eventListeners
 
-addButton.addEventListener('click', addPlayer);
-playerName.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {
-      console.log('new player enter');
-      addPlayer();
-    }
-  });
+// addButton.addEventListener('click', addPlayer);
+// playerName.addEventListener("keyup", (e) => {
+//     if (e.key === "Enter") {
+//       console.log('new player enter');
+//       addPlayer();
+//     }
+//   });
 
 //functions
 function addPlayer(event) {
     // console.log(playerName.value);
     // event.preventDefault();
-    const player = playerName.value;
+    const player = localStorage.getItem('Best-Player');
     localStorage.setItem('Player-Name', player);
-    playerName.value = "";
-    
-    addButton.classList.add(
-      "hideMe", 
-    );
-    playerName.classList.add(
-      "hideMe", 
-    );
+    console.log(`Best Player :${player}`);
+    console.log(`stored game BestScore : ${localStorage.getItem('bestScore')}`)
+
+    fetch('http://localhost:5000/api/games', {
+      method: 'GET'
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (data) {
+      console.log(data);
+      console.log('try to post score');
+    }).catch(function (error) {
+      console.warn('Something went wrong.', error);
+    });
+
+
   }
 function ifNoCurrentPlayer() {
-     if(!Player-Name || playerName.value('')) {
-      addButton.classList.remove(
-        "showMe", 
-      );
-      playerName.classList.remove(
-        "showMe", 
-      );
-      console.log('change to green')
-     }
+     
+      console.log('no  current player')
+      
 }
-ifNoCurrentPlayer();
-// classList.add(
-//   "list-group-item",
-//   "border-0",
-//   "d-flex",
-//   "align-todos-center",
-//   "ps-0"
-// );
+addPlayer();
+
+
