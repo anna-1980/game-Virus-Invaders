@@ -55,7 +55,7 @@ class EndScene extends Phaser.Scene {
         this.add.text( 50, 330, `Congratulations: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
         
       } else {
-        gameState.scoreText = this.add.text(50, 260, 'Score: 0', { fontFamily: 'Georgia', fontSize: '35px', fill: '#ffb4f4' });
+        gameState.scoreText = this.add.text(50, 260, 'Score: 0', { fontFamily: 'Georgia', fontSize: '35px', fill: '#fee79' });
         gameState.scoreText.setText(`Your Score ${localStorage.getItem('Player-Name')}: ${gameState.score}`);
         this.add.text( 50, 300, `Highest Score: ${gameState.highScore} by ${gameState.bestScorePlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
       

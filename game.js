@@ -2,8 +2,8 @@ const gameState = {
     score: 0,
     lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,
-    playerName: localStorage.getItem('Player-Name'),
-    bestScorePlayer: localStorage.getItem('Best-Player') 
+    playerName: '',
+    bestScorePlayer: '',
   };
   
   
@@ -13,11 +13,17 @@ const gameState = {
     scale: {
       width: 450,
       height: 500,
+          dom: {
+      createContainer: true
+   },
       mode: Phaser.Scale.FIT,
       // autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     parent:'game',
     backgroundColor: "fec55e",
+    dom: {
+      createContainer: true
+   },
     physics: {
       default: 'arcade',
       arcade: {
@@ -27,7 +33,7 @@ const gameState = {
 //         debugShowBody: true,
       }
     },
-    scene: [StartScene, GameScene, EndScene]
+    scene: [IntroScene, StartScene, GameScene, EndScene]
   };
   const game = new Phaser.Game(config);
   
