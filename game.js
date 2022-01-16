@@ -3,7 +3,7 @@ const gameState = {
     lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,
     playerName: '',
-    bestScorePlayer: '',
+    bestScorePlayer: localStorage.getItem('Best-Player') 
   };
   
   
