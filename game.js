@@ -1,4 +1,5 @@
 const gameState = {
+    game: 'Virusinvaders',
     score: 0,
     lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,
@@ -6,6 +7,8 @@ const gameState = {
     bestScorePlayer: localStorage.getItem('Best-Player') || 'Anna'
   };
   
+
+
   console.log(gameState);
   
   const config = {

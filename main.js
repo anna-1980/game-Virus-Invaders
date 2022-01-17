@@ -22,31 +22,20 @@ function addPlayer(event) {
     console.log(`Best Player :${player}`);
     console.log(`stored game BestScore : ${localStorage.getItem('bestScore')}`)
     
-    const corsOptions = { origin :"*" , optionsSuccessStatus : 200 ,  // some legacy browsers 
-    } ; app.use ( cors ( corsOptions ) ) ;
 
-
-    fetch('http://localhost:5000/api/games', {
-      method: 'GET'
-    }).then(function (response) {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(response);
-    }).then(function (data) {
-      console.log(data);
-      console.log('try to post score');
-    }).catch(function (error) {
-      console.warn('Something went wrong.', error);
-    });
-
-
+    // fetch('http://localhost:5000/api/scores', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({game: 'Test game', playerName: 'Anna', score: 10000}) 
+    // }).then((response) => response.json())
+    //   .then((data) =>console.log(data))
+    //   .catch( (error) =>console.warn('Something went wrong.', error));
   }
+
 function ifNoCurrentPlayer() {
      
       console.log('no  current player')
       
 }
-addPlayer();
-
-

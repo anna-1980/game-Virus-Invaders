@@ -97,13 +97,21 @@ class EndScene extends Phaser.Scene {
       
 
       }
+
+
+
+      
       console.log(gameState.highScore);
-
-
-
-
+      fetch('http://localhost:5000/api/scores', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({game: 'Test game', playerName: 'Anna', score: 10000}) 
+  }).then((response) => response.json())
+    .then((data) =>console.log(data))
+    .catch( (error) =>console.warn('Something went wrong.', error));
  
-
    };
      update(){
    };
