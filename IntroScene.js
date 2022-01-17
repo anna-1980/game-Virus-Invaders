@@ -5,7 +5,6 @@ class IntroScene extends Phaser.Scene {
     
     preload() {
       this.load.html('nameform', './assets/nameform.html');
-
    
     }
     
@@ -15,11 +14,8 @@ class IntroScene extends Phaser.Scene {
       let nameInput = this.add.dom(220, 100).createFromCache('nameform');
       let text = this.add.text(210, 50, 'Please enter your name', { fill: '#ba6d08', fontSize: '20px '}).setOrigin(0.5, 0.5);
       let names = text.eventNames();
-      console.log(nameInput);
+    //   console.log(nameInput);
   
-    
-
-
       nameInput.addListener('keyup');
       nameInput.on('keyup', function (event) {
               // console.log(event.target);

@@ -5,45 +5,37 @@ const addButton = document.querySelector(".addButton");
 
 //eventListeners
 
-addButton.addEventListener('click', addPlayer);
-playerName.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {
-      console.log('new player enter');
-      addPlayer();
-    }
-  });
+// addButton.addEventListener('click', addPlayer);
+// playerName.addEventListener("keyup", (e) => {
+//     if (e.key === "Enter") {
+//       console.log('new player enter');
+//       addPlayer();
+//     }
+//   });
 
 //functions
 function addPlayer(event) {
     // console.log(playerName.value);
     // event.preventDefault();
-    const player = playerName.value;
+    const player = localStorage.getItem('Best-Player');
     localStorage.setItem('Player-Name', player);
-    playerName.value = "";
+    console.log(`Best Player :${player}`);
+    console.log(`stored game BestScore : ${localStorage.getItem('bestScore')}`)
     
-    addButton.classList.add(
-      "hideMe", 
-    );
-    playerName.classList.add(
-      "hideMe", 
-    );
+
+    // fetch('http://localhost:5000/api/scores', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({game: 'Test game', playerName: 'Anna', score: 10000}) 
+    // }).then((response) => response.json())
+    //   .then((data) =>console.log(data))
+    //   .catch( (error) =>console.warn('Something went wrong.', error));
   }
+
 function ifNoCurrentPlayer() {
-     if(!Player-Name || playerName.value('')) {
-      addButton.classList.remove(
-        "showMe", 
-      );
-      playerName.classList.remove(
-        "showMe", 
-      );
-      console.log('change to green')
-     }
+     
+      console.log('no  current player')
+      
 }
-ifNoCurrentPlayer();
-// classList.add(
-//   "list-group-item",
-//   "border-0",
-//   "d-flex",
-//   "align-todos-center",
-//   "ps-0"
-// );
