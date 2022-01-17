@@ -100,9 +100,9 @@ class EndScene extends Phaser.Scene {
 
       console.log(gameState.highScore);
 
-      
+   
     
-      fetch('http://localhost:5000/api/scores', {
+      fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
