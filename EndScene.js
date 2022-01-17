@@ -98,10 +98,10 @@ class EndScene extends Phaser.Scene {
 
       }
 
-
+      console.log(gameState.highScore);
 
       
-      console.log(gameState.highScore);
+    
       fetch('http://localhost:5000/api/scores', {
     method: 'POST',
     headers: {
