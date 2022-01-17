@@ -3,10 +3,10 @@ const gameState = {
     lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,
     playerName: '',
-    bestScorePlayer: localStorage.getItem('Best-Player') 
+    bestScorePlayer: localStorage.getItem('Best-Player') || 'Anna'
   };
   
-  
+  console.log(gameState);
   
   const config = {
     type: Phaser.AUTO,

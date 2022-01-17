@@ -21,6 +21,10 @@ function addPlayer(event) {
     localStorage.setItem('Player-Name', player);
     console.log(`Best Player :${player}`);
     console.log(`stored game BestScore : ${localStorage.getItem('bestScore')}`)
+    
+    const corsOptions = { origin :"*" , optionsSuccessStatus : 200 ,  // some legacy browsers 
+    } ; app.use ( cors ( corsOptions ) ) ;
+
 
     fetch('http://localhost:5000/api/games', {
       method: 'GET'
