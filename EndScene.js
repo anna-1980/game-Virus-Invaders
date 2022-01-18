@@ -12,7 +12,7 @@ class EndScene extends Phaser.Scene {
   create() {
     const r1 = this.add.rectangle(450/2, 250, 450, 500, 0x215e85);
     // this.add.text( 50, 200, 'Time is up', { fontFamily: 'Georgia', fontSize: '20px', fill: '#800000' });
-    this.add.text( 50, 200, 'Time is up :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+    this.add.text( 50, 200, 'You survived :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
     let newBestPlayer = localStorage.getItem('Player-Name');
     
     const bestScoreText = localStorage.getItem('bestScore');
