@@ -104,19 +104,19 @@ class EndScene extends Phaser.Scene {
       console.log(gameState.playerName);
       console.log(gameState.bestScorePlayer);
 
-      fetch('http://localhost:5000/api/scores', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      game: `${gameState.gameName}`,
-      playerName: `${gameState.playerName}`,
-      score: `${gameState.highScore}`}) 
+  //     fetch('http://localhost:5000/api/scores', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     game: `${gameState.gameName}`,
+  //     playerName: `${gameState.playerName}`,
+  //     score: `${gameState.highScore}`}) 
 
-  }).then((response) => response.json())
-    .then((data) =>console.log(data))
-    .catch( (error) =>console.warn('Something went wrong.', error));
+  // }).then((response) => response.json())
+  //   .then((data) =>console.log(data))
+  //   .catch( (error) =>console.warn('Something went wrong.', error));
  
 
     fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
@@ -126,8 +126,8 @@ class EndScene extends Phaser.Scene {
       },
       body: JSON.stringify({
         game: `${gameState.gameName}`,
-        playerName: `${gameState.highScore}`,
-        score: `${gameState.highScore}`}) 
+        playerName: `${gameState.playerName}`,
+        score: `${gameState.score}`}) 
   
     }).then((response) => response.json())
       .then((data) =>console.log(data))
