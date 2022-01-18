@@ -97,22 +97,48 @@ class EndScene extends Phaser.Scene {
       
 
       }
-
+      
+      console.log(gameState.game);
+      console.log(gameState.score);
       console.log(gameState.highScore);
+      console.log(gameState.playerName);
+      console.log(gameState.bestScorePlayer);
 
-   
-    
-      fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
+      fetch('http://localhost:5000/api/scores', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({game: 'Test game', playerName: 'Anna', score: 10000}) 
+    body: JSON.stringify({
+      game: `${gameState.gameName}`,
+      playerName: `${gameState.playerName}`,
+      score: `${gameState.highScore}`}) 
+
   }).then((response) => response.json())
     .then((data) =>console.log(data))
     .catch( (error) =>console.warn('Something went wrong.', error));
  
+
+    fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        game: `${gameState.gameName}`,
+        playerName: `${gameState.highScore}`,
+        score: `${gameState.highScore}`}) 
+  
+    }).then((response) => response.json())
+      .then((data) =>console.log(data))
+      .catch( (error) =>console.warn('Something went wrong.', error));
+ 
+      
+
    };
      update(){
    };
   }
+
+  // http://localhost:5000/api/scores
+  // https://wbs-final-game-back.herokuapp.com/api/scores
