@@ -69,7 +69,7 @@ class GameScene extends Phaser.Scene {
 //ending the game
     this.time.addEvent({
       // delay: 60000, 
-        delay: 10000,
+        delay: 15000,
         loop: false,
       callback: () => {
          
@@ -117,17 +117,17 @@ class GameScene extends Phaser.Scene {
         })
 
 
-      const bugs = this.physics.add.group();
+      const viruses = this.physics.add.group();
   
       const virusList = ['virus1', 'virus2', 'virus3']
 
       const bugGen = () => {
         const xCoord = Math.random() * 640
         let randomVirus = virusList[Math.floor(Math.random() * 3)]
-        bugs.create(xCoord, 10, randomVirus).setScale(.2).setAlpha(0) 
+        viruses.create(xCoord, 10, randomVirus).setScale(.2).setAlpha(0) 
         
         this.tweens.add({
-          targets: bugs.getChildren(), 
+          targets: viruses.getChildren(), 
           delay: 0,
           duration: 550,
           ease: 'Sine.easeInOut',
@@ -141,13 +141,13 @@ class GameScene extends Phaser.Scene {
       }
   
       const bugGenLoop = this.time.addEvent({
-        delay: 150,
+        delay: 100,
         callback: bugGen,
         callbackScope: this,
         loop: true,
       });
   
-      this.physics.add.collider(bugs, platforms, bug => {
+      this.physics.add.collider(viruses, platforms, bug => {
         bug.destroy();
         // console.log(`Bug:`);
         // console.log(bug);
@@ -157,7 +157,7 @@ class GameScene extends Phaser.Scene {
       })
   
       
-      this.physics.add.collider( gameState.player, bugs, ( player, virus ) => {     
+      this.physics.add.collider( gameState.player, viruses, ( player, virus ) => {     
           // virus.setTint(0xff0000);//red
           // player.setTint(0x30a0ea);//blue
           player.setTint(0xff0000),

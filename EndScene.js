@@ -12,7 +12,7 @@ class EndScene extends Phaser.Scene {
   create() {
     const r1 = this.add.rectangle(450/2, 250, 450, 500, 0x215e85);
     // this.add.text( 50, 200, 'Time is up', { fontFamily: 'Georgia', fontSize: '20px', fill: '#800000' });
-    this.add.text( 50, 200, 'Time is up :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+    this.add.text( 50, 200, 'You survived :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
     let newBestPlayer = localStorage.getItem('Player-Name');
     
     const bestScoreText = localStorage.getItem('bestScore');
@@ -97,22 +97,48 @@ class EndScene extends Phaser.Scene {
       
 
       }
-
-      console.log(gameState.highScore);
-
       
-    
-      fetch('http://localhost:5000/api/scores', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({game: 'Test game', playerName: 'Anna', score: 10000}) 
-  }).then((response) => response.json())
-    .then((data) =>console.log(data))
-    .catch( (error) =>console.warn('Something went wrong.', error));
+      console.log(gameState.game);
+      console.log(gameState.score);
+      console.log(gameState.highScore);
+      console.log(gameState.playerName);
+      console.log(gameState.bestScorePlayer);
+
+  //     fetch('http://localhost:5000/api/scores', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     game: `${gameState.gameName}`,
+  //     playerName: `${gameState.playerName}`,
+  //     score: `${gameState.highScore}`}) 
+
+  // }).then((response) => response.json())
+  //   .then((data) =>console.log(data))
+  //   .catch( (error) =>console.warn('Something went wrong.', error));
  
+
+    fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        game: `${gameState.gameName}`,
+        playerName: `${gameState.playerName}`,
+        score: `${gameState.score}`}) 
+  
+    }).then((response) => response.json())
+      .then((data) =>console.log(data))
+      .catch( (error) =>console.warn('Something went wrong.', error));
+ 
+      
+
    };
      update(){
    };
   }
+
+  // http://localhost:5000/api/scores
+  // https://wbs-final-game-back.herokuapp.com/api/scores

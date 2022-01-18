@@ -23,7 +23,7 @@ class IntroScene extends Phaser.Scene {
               { 
                   var inputText = this.getChildByName('nameField');
                   //  Have they entered anything?
-          console.log(event);
+          // console.log(event);
                   if (inputText.value !== '' )
                   {
                       //  Turn off the click events
@@ -38,7 +38,7 @@ class IntroScene extends Phaser.Scene {
                 localStorage.setItem('Player-Name', inputText.value);
                       gameState.playerName = inputText.value;
                       // console.log(gameState);
-                  console.log(this.text);     
+                  // console.log(this.text);     
                 this.scene.scene.stop('IntroScene');
                 this.scene.scene.start('StartScene');
   
