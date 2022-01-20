@@ -12,7 +12,7 @@ class GameScene extends Phaser.Scene {
       this.load.image('platform2', './assets/ground03.png');
       // this.load.image('player', './assets/player.png');
       this.load.spritesheet('player', 
-      './assets/777.png',
+      './assets/avatar-face.png',
       { frameWidth: 125, frameHeight: 201 }
     );
       this.load.image('background', './assets/background05-450x500.png');
