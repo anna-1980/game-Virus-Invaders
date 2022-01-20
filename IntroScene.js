@@ -5,14 +5,15 @@ class IntroScene extends Phaser.Scene {
     
     preload() {
       this.load.html('nameform', './assets/nameform.html');
-   
+      this.load.image('backgroundPale', './assets/background05-pale.png');
     }
     
     create() {
       
       //add player name form
+      this.add.image(0, 0 , 'backgroundPale').setOrigin(0, 0)
       let nameInput = this.add.dom(220, 100).createFromCache('nameform');
-      let text = this.add.text(210, 50, 'Please enter your name', { fill: '#ba6d08', fontSize: '20px '}).setOrigin(0.5, 0.5);
+      let text = this.add.text(225, 60, 'Please enter your name', { fill: '#ba6d08', fontSize: '20px '}).setOrigin(0.5, 0.5);
       let names = text.eventNames();
     //   console.log(nameInput);
   

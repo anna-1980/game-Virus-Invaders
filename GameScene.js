@@ -6,15 +6,17 @@ class GameScene extends Phaser.Scene {
       this.load.image('virus1', './assets/Virus01.png');
       this.load.image('virus2', './assets/Virus02.png');
       this.load.image('virus3', './assets/Virus03.png');
+      this.load.image('virus4', './assets/Virus04.png');
+      this.load.image('virus5', './assets/Virus05.png');
       this.load.image('platform', './assets/ground02.png');
-      this.load.image('platform2', './assets/ground02.png');
+      this.load.image('platform2', './assets/ground03.png');
       // this.load.image('player', './assets/player.png');
       this.load.spritesheet('player', 
       './assets/777.png',
       { frameWidth: 125, frameHeight: 201 }
     );
       this.load.image('background', './assets/background05-450x500.png');
-      this.load.image('heart', './assets/heart06.png');
+      this.load.image('heart', './assets/heart07.png');
 
 
       this.load.audio('squish', ['./assets/squish06a.mp3'])
@@ -90,8 +92,8 @@ class GameScene extends Phaser.Scene {
 
       platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
   
-      gameState.scoreText = this.add.text(350, 475, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
-      gameState.livesText = this.add.text(35, 475, 'Lives: 10', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+      gameState.scoreText = this.add.text(350, 470, 'Score: 0', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
+      gameState.livesText = this.add.text(42, 470, 'Lives: 10', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
       let currentPlayer = localStorage.getItem('Player-Name');
       this.add.text(150, 478, `Now playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#63e3e0' });
       
@@ -120,12 +122,12 @@ class GameScene extends Phaser.Scene {
 
       const viruses = this.physics.add.group();
   
-      const virusList = ['virus1', 'virus2', 'virus3']
+      const virusList = ['virus1', 'virus2', 'virus3', 'virus5']
 
-      const bugGen = () => {
-        const xCoord = Math.random() * 640
-        let randomVirus = virusList[Math.floor(Math.random() * 3)]
-        viruses.create(xCoord, 10, randomVirus).setScale(.2).setAlpha(0) 
+      const virusGenerator = () => {
+        const xCoord = Math.random() * 540
+        let randomVirus = virusList[Math.floor(Math.random() * 4)]
+        viruses.create(xCoord, 15, randomVirus).setScale(.2).setAlpha(0) 
         
         this.tweens.add({
           targets: viruses.getChildren(), 
@@ -142,8 +144,8 @@ class GameScene extends Phaser.Scene {
       }
   
       const bugGenLoop = this.time.addEvent({
-        delay: 100,
-        callback: bugGen,
+        delay: 125,
+        callback: virusGenerator,
         callbackScope: this,
         loop: true,
       });
