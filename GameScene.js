@@ -39,7 +39,7 @@ class GameScene extends Phaser.Scene {
       delay: 500, 
         loop: false,
       callback: () => {
-        const timerText1 = this.add.text(20, 50, ` ${gameState.playerName} survive for 1 minute`, { fontSize: '25px', fill: '#800000'});
+        const timerText1 = this.add.text(20, 50, ` ${gameState.playerName} survive for 1 minute`, { fontSize: '20px', fill: '#800000'});
         this.tweens.add({
           targets: timerText1,
           props: {
@@ -71,8 +71,8 @@ class GameScene extends Phaser.Scene {
 
 //ending the game
     this.time.addEvent({
-      // delay: 60000, 
-        delay: 15000,
+      delay: 60000, 
+        // delay: 15000,
         loop: false,
       callback: () => {
          
@@ -92,7 +92,7 @@ class GameScene extends Phaser.Scene {
 
       platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
   
-      gameState.scoreText = this.add.text(350, 470, 'Score: 0', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
+      gameState.scoreText = this.add.text(340, 470, 'Score: 0', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
       gameState.livesText = this.add.text(42, 470, 'Lives: 10', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
       let currentPlayer = localStorage.getItem('Player-Name');
       this.add.text(150, 478, `Now playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#63e3e0' });
