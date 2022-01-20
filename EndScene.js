@@ -109,19 +109,19 @@ class EndScene extends Phaser.Scene {
   //   .catch( (error) =>console.warn('Something went wrong.', error));
  
 
-    // fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     game: `${gameState.gameName}`,
-    //     playerName: `${gameState.playerName}`,
-    //     score: `${gameState.score}`}) 
+    fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        game: `${gameState.gameName}`,
+        playerName: `${gameState.playerName}`,
+        score: `${gameState.score}`}) 
   
-    // }).then((response) => response.json())
-    //   .then((data) =>console.log(data))
-    //   .catch( (error) =>console.warn('Something went wrong.', error));
+    }).then((response) => response.json())
+      .then((data) =>console.log(data))
+      .catch( (error) =>console.warn('Something went wrong.', error));
  
       
 
