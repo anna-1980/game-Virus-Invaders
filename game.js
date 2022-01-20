@@ -1,5 +1,5 @@
 const gameState = {
-    gameName: 'Virusinvaders',
+    gameName: 'Virus Invaders',
     score: 0,
     lives: 10,
     highScore: localStorage.getItem('bestScore') || 1,

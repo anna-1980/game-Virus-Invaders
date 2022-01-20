@@ -14,6 +14,8 @@ class GameScene extends Phaser.Scene {
       { frameWidth: 125, frameHeight: 201 }
     );
       this.load.image('background', './assets/background05-450x500.png');
+      this.load.image('heart', './assets/heart06.png');
+
 
       this.load.audio('squish', ['./assets/squish06a.mp3'])
       this.load.audio('backgroundMusic', ['./assets/VImusic.mp3'])
@@ -28,9 +30,8 @@ class GameScene extends Phaser.Scene {
     gameState.puff = this.sound.add('puff', { loop: false , volume: 0.2});
     gameState.squish = this.sound.add("squish", { loop: false });
     gameState.auch = this.sound.add("auch", { loop: false });
-    
-    
-  gameState.music.play();
+  
+    gameState.music.play();
 
     this.time.addEvent({
       delay: 500, 
@@ -90,9 +91,9 @@ class GameScene extends Phaser.Scene {
       platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
   
       gameState.scoreText = this.add.text(350, 475, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
-      gameState.livesText = this.add.text(10, 475, 'Lives: 10', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
+      gameState.livesText = this.add.text(35, 475, 'Lives: 10', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffee79' });
       let currentPlayer = localStorage.getItem('Player-Name');
-      this.add.text(150, 480, `Now playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#7cfeb3' });
+      this.add.text(150, 478, `Now playing: ${currentPlayer}`, { fontFamily: 'Georgia', fontSize: '15px', fill: '#63e3e0' });
       
       gameState.player = this.physics.add.sprite(225, 440, 'player')
       .setScale(.4)
@@ -105,16 +106,16 @@ class GameScene extends Phaser.Scene {
   
       gameState.cursors = this.input.keyboard.createCursorKeys();
   
-      const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
-      const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+    //   const left = this.add.text( 20, 450, '⬅️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
+    //   const right = this.add.text( 410, 450, '➡️', {fontFamily: 'Georgia', fill: '#68f5ff', fontSize: '20px'}).setInteractive();
       
-      left.on('pointerdown', () => {
-        gameState.player.setAccelerationX(-5000);
-        })
+    //   left.on('pointerdown', () => {
+    //     gameState.player.setAccelerationX(-5000);
+    //     })
         
-    right.on('pointerdown', () => {
-        gameState.player.setAccelerationX(5000);
-        })
+    // right.on('pointerdown', () => {
+    //     gameState.player.setAccelerationX(5000);
+    //     })
 
 
       const viruses = this.physics.add.group();
@@ -227,7 +228,18 @@ class GameScene extends Phaser.Scene {
     gameState.squish = this.sound.add("squish", { loop: false });
     gameState.auch = this.sound.add("auch", { loop: false });
     
-    
+    const heart = this.add.image(19, 477, 'heart').setOrigin(0.5, 0.5).setScale(0.15);
+
+    this.tweens.add({
+      targets: heart, 
+      scaleX:0.2,
+      scaleY:0.2,
+      duration: 400,
+      ease: 'Sine.easeInOut',
+      yoyo: true,
+      repeat: -1,
+      alpha: {value: 1, duration: 300}, 
+    })
    
     }
   

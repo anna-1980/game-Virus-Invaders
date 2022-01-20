@@ -14,25 +14,17 @@ class EndScene extends Phaser.Scene {
     // this.add.text( 50, 200, 'Time is up', { fontFamily: 'Georgia', fontSize: '20px', fill: '#800000' });
     this.add.text( 50, 200, 'You survived :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
     let newBestPlayer = localStorage.getItem('Player-Name');
-    
     const bestScoreText = localStorage.getItem('bestScore');
     const bestScore = bestScoreText && parseInt(bestScoreText, 10);
     console.log(gameState.score);
-    // localStorage.setItem ('bestScore', gameState.score);
     if (!bestScore || gameState.score > bestScore){
       localStorage.setItem('bestScore', gameState.score);
       gameState.highScore = localStorage.getItem('bestScore');
-      localStorage.setItem('Best-Player', newBestPlayer);
-      
-    }
-    
-    gameState.music.stop();
-     
-
-   
-    const startB = this.add.image(350, 380, 'start').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
-    const goBack =this.add.image(100, 380, 'goBack').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
-    startB.on('pointerdown', () => {
+      localStorage.setItem('Best-Player', newBestPlayer);}
+      gameState.music.stop();
+      const startB = this.add.image(350, 380, 'start').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
+      const goBack =this.add.image(100, 380, 'goBack').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
+      startB.on('pointerdown', () => {
       this.scene.stop('EndScene')
       this.scene.start('GameScene')
       gameState.score = 0;
@@ -119,19 +111,19 @@ class EndScene extends Phaser.Scene {
   //   .catch( (error) =>console.warn('Something went wrong.', error));
  
 
-    fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        game: `${gameState.gameName}`,
-        playerName: `${gameState.playerName}`,
-        score: `${gameState.score}`}) 
+    // fetch('https://wbs-final-game-back.herokuapp.com/api/scores', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     game: `${gameState.gameName}`,
+    //     playerName: `${gameState.playerName}`,
+    //     score: `${gameState.score}`}) 
   
-    }).then((response) => response.json())
-      .then((data) =>console.log(data))
-      .catch( (error) =>console.warn('Something went wrong.', error));
+    // }).then((response) => response.json())
+    //   .then((data) =>console.log(data))
+    //   .catch( (error) =>console.warn('Something went wrong.', error));
  
       
 
