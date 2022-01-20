@@ -76,7 +76,7 @@ class EndScene extends Phaser.Scene {
         repeat: false
       }) 
     })
-    this.add.text( 50, 270, `${gameState.playerName} Your Score is: ${gameState.score}  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#d36c05' });
+    this.add.text( 50, 270, `${gameState.playerName} your Score is: ${gameState.score}  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#d36c05' });
 
       // if (gameState.score >= gameState.highScore){
       //   this.add.text( 50, 250, `NEW High Score: ${gameState.highScore} by: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
