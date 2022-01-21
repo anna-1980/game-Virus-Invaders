@@ -11,7 +11,7 @@ class EndScene extends Phaser.Scene {
   
   create() {
     this.add.image(0, 0 , 'backgroundPale').setOrigin(0, 0);
-    this.add.text( 20, 205, 'Congratulations you made it !', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+
     let newBestPlayer = localStorage.getItem('Player-Name');
     const bestScoreText = localStorage.getItem('bestScore');
     const bestScore = bestScoreText && parseInt(bestScoreText, 10);
@@ -78,15 +78,16 @@ class EndScene extends Phaser.Scene {
     })
     this.add.text( 50, 270, `${gameState.playerName} your Score is: ${gameState.score}  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#d36c05' });
 
-      // if (gameState.score >= gameState.highScore){
-      //   this.add.text( 50, 250, `NEW High Score: ${gameState.highScore} by: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
-      //   this.add.text( 50, 300, `Congratulations: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
+      if (gameState.lives === 0){
+        this.add.text( 50, 220, `GAME OVER  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#800000' });
         
-      // } else {
-      //   gameState.scoreText = this.add.text(50, 260, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffd342' });
-      //   // gameState.scoreText.setText(`Your Score ${localStorage.getItem('Player-Name')}: ${gameState.score}`);
-      //   this.add.text( 50, 300, `${gameState.playerName} Your Score is: ${gameState.score}  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
-      // }
+      } else {
+    
+        this.add.text( 20, 205, 'Congratulations you made it !', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+
+
+
+      }
       
       console.log(gameState.game);
       console.log(gameState.score);
