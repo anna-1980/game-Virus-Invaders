@@ -10,29 +10,20 @@ class EndScene extends Phaser.Scene {
    };
   
   create() {
-    const r1 = this.add.rectangle(450/2, 250, 450, 500, 0x215e85);
-    // this.add.text( 50, 200, 'Time is up', { fontFamily: 'Georgia', fontSize: '20px', fill: '#800000' });
-    this.add.text( 50, 200, 'You survived :)', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+    this.add.image(0, 0 , 'backgroundPale').setOrigin(0, 0);
+
     let newBestPlayer = localStorage.getItem('Player-Name');
-    
     const bestScoreText = localStorage.getItem('bestScore');
     const bestScore = bestScoreText && parseInt(bestScoreText, 10);
     console.log(gameState.score);
-    // localStorage.setItem ('bestScore', gameState.score);
     if (!bestScore || gameState.score > bestScore){
       localStorage.setItem('bestScore', gameState.score);
       gameState.highScore = localStorage.getItem('bestScore');
-      localStorage.setItem('Best-Player', newBestPlayer);
-      
-    }
-    
-    gameState.music.stop();
-     
-
-   
-    const startB = this.add.image(350, 380, 'start').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
-    const goBack =this.add.image(100, 380, 'goBack').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
-    startB.on('pointerdown', () => {
+      localStorage.setItem('Best-Player', newBestPlayer);}
+      gameState.music.stop();
+      const startB = this.add.image(350, 380, 'start').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
+      const goBack =this.add.image(100, 380, 'goBack').setOrigin(0.5, 0.5).setScale(0.3).setInteractive();
+      startB.on('pointerdown', () => {
       this.scene.stop('EndScene')
       this.scene.start('GameScene')
       gameState.score = 0;
@@ -85,16 +76,16 @@ class EndScene extends Phaser.Scene {
         repeat: false
       }) 
     })
+    this.add.text( 50, 270, `${gameState.playerName} your Score is: ${gameState.score}  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#d36c05' });
 
-      if (gameState.score >= gameState.highScore){
-        this.add.text( 50, 250, `NEW High Score: ${gameState.highScore} by: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
-        this.add.text( 50, 300, `Congratulations: ${newBestPlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
+      if (gameState.lives === 0){
+        this.add.text( 50, 220, `GAME OVER  `, { fontFamily: 'Georgia', fontSize: '25px', fill: '#800000' });
         
       } else {
-        gameState.scoreText = this.add.text(50, 260, 'Score: 0', { fontFamily: 'Georgia', fontSize: '20px', fill: '#ffd342' });
-        gameState.scoreText.setText(`Your Score ${localStorage.getItem('Player-Name')}: ${gameState.score}`);
-        this.add.text( 50, 300, `Highest Score: ${gameState.highScore} by ${gameState.bestScorePlayer}`, { fontFamily: 'Georgia', fontSize: '25px', fill: '#ffd342' });
-      
+    
+        this.add.text( 20, 205, 'Congratulations you made it !', { fontFamily: 'Georgia', fontSize: '30px', fill: '#FE5151' });
+
+
 
       }
       
