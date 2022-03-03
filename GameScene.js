@@ -5,9 +5,9 @@ class GameScene extends Phaser.Scene {
     preload() {
       this.load.image('virus1', './assets/Virus01.png');
       this.load.image('virus2', './assets/Virus02.png');
-      this.load.image('virus3', './assets/Virus03.png');
-      this.load.image('virus4', './assets/Virus04.png');
-      this.load.image('virus5', './assets/Virus05.png');
+      // this.load.image('virus3', './assets/Virus03.png');
+      // this.load.image('virus4', './assets/Virus04.png');
+      // this.load.image('virus5', './assets/Virus05.png');
       this.load.image('platform', './assets/ground02.png');
       this.load.image('platform2', './assets/ground03.png');
       // this.load.image('player', './assets/player.png');
@@ -39,7 +39,7 @@ class GameScene extends Phaser.Scene {
       delay: 500, 
         loop: false,
       callback: () => {
-        const timerText1 = this.add.text(20, 50, ` ${gameState.playerName} survive for 1 minute`, { fontSize: '20px', fill: '#800000'});
+        const timerText1 = this.add.text(20, 50, ` ${gameState.playerName} survive avoiding viruses`, { fontSize: '20px', fill: '#800000'});
         this.tweens.add({
           targets: timerText1,
           props: {
@@ -69,15 +69,22 @@ class GameScene extends Phaser.Scene {
     })
 
 
-//ending the game
+//switch to level 2
     this.time.addEvent({
-      delay: 60000, 
-        // delay: 15000,
+      delay: 30000, 
         loop: false,
       callback: () => {
-         
+        const timerText2 = this.add.text(90, 250, ` Level 2`, { fontSize: '30px', fill: '#800000'});
+        const timerText3 = this.add.text(90, 300, ` get ready`, { fontSize: '30px', fill: '#800000'});
+       this.physics.pause(),
+        this.time.addEvent({
+        delay: 2000,
+        loop: false,
+        callback: () => {
         this.scene.stop('GameScene')
-        this.scene.start('EndScene')
+        this.scene.start('GameScene2')
+        }
+        })
       //   console.log('Show me GameState:');
       //  console.log(gameState);
     }, 
@@ -122,11 +129,11 @@ class GameScene extends Phaser.Scene {
 
       const viruses = this.physics.add.group();
   
-      const virusList = ['virus1', 'virus2', 'virus3', 'virus5']
+      const virusList = ['virus1', 'virus2']
 
       const virusGenerator = () => {
         const xCoord = Math.random() * 540
-        let randomVirus = virusList[Math.floor(Math.random() * 4)]
+        let randomVirus = virusList[Math.floor(Math.random() * 2)]
         viruses.create(xCoord, 15, randomVirus).setScale(.2).setAlpha(0) 
         
         this.tweens.add({

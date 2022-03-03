@@ -1,6 +1,6 @@
-class GameScene extends Phaser.Scene {
+class GameScene2 extends Phaser.Scene {
     constructor(){
-      super({ key: 'GameScene' })
+      super({ key: 'GameScene2' })
     }
     preload() {
       this.load.image('virus1', './assets/Virus01.png');
@@ -20,7 +20,6 @@ class GameScene extends Phaser.Scene {
 
 
       this.load.audio('squish', ['./assets/squish06a.mp3'])
-      this.load.audio('backgroundMusic', ['./assets/VImusic.mp3'])
       this.load.audio('auch', ['./assets/aua02.mp3'])
       this.load.audio('puff', ['./assets/puff01.mp3'])
     }
@@ -28,7 +27,6 @@ class GameScene extends Phaser.Scene {
     
   create() {
  
-    gameState.music = this.sound.add('backgroundMusic', { loop: true, volume: 0.3});
     gameState.puff = this.sound.add('puff', { loop: false , volume: 0.2});
     gameState.squish = this.sound.add("squish", { loop: false });
     gameState.auch = this.sound.add("auch", { loop: false });
@@ -39,7 +37,8 @@ class GameScene extends Phaser.Scene {
       delay: 500, 
         loop: false,
       callback: () => {
-        const timerText1 = this.add.text(20, 50, ` ${gameState.playerName} survive for 1 minute`, { fontSize: '20px', fill: '#800000'});
+        const timerText1 = this.add.text(80, 250, ` Level 2`, { fontSize: '30px', fill: '#800000'});
+        this.physics.start(),
         this.tweens.add({
           targets: timerText1,
           props: {
@@ -71,12 +70,12 @@ class GameScene extends Phaser.Scene {
 
 //ending the game
     this.time.addEvent({
-      delay: 60000, 
+      delay: 30000, 
         // delay: 15000,
         loop: false,
       callback: () => {
          
-        this.scene.stop('GameScene')
+        this.scene.stop('GameScene2')
         this.scene.start('EndScene')
       //   console.log('Show me GameState:');
       //  console.log(gameState);
@@ -193,7 +192,7 @@ class GameScene extends Phaser.Scene {
               loop: false,
             callback: () => {
               this.physics.pause();
-              this.scene.stop('GameScene');
+              this.scene.stop('GameScene2');
               this.scene.start('EndScene');
               
               }, 

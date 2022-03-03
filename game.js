@@ -48,7 +48,7 @@ const gameState = {
 //         debugShowBody: true,
       }
     },
-    scene: [IntroScene, StartScene, GameScene, EndScene]
+    scene: [IntroScene, StartScene, GameScene, GameScene2, EndScene]
   };
   const game = new Phaser.Game(config);
   
