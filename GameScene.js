@@ -134,7 +134,7 @@ class GameScene extends Phaser.Scene {
           delay: 0,
           duration: 550,
           ease: 'Sine.easeInOut',
-          velocityY: -550,
+          velocityY: -500,
           angle: 210,
           yoyo: true,
           repeat: -1,
@@ -143,8 +143,8 @@ class GameScene extends Phaser.Scene {
         
       }
   
-      const bugGenLoop = this.time.addEvent({
-        delay: 125,
+      const virGenLoop = this.time.addEvent({
+        delay: 170,
         callback: virusGenerator,
         callbackScope: this,
         loop: true,
@@ -184,7 +184,7 @@ class GameScene extends Phaser.Scene {
         
         if (gameState.lives === 0)
           {this.physics.pause();
-            bugGenLoop.destroy();
+            virGenLoop.destroy();
             gameState.music.stop();
           this.add.text(125, 150, 'Game Over', { fontFamily: 'Georgia', fontSize: '40px', fill: '#ff0202' });
           gameState.puff.play(),
