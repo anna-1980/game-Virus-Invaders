@@ -8,14 +8,14 @@ class GameScene extends Phaser.Scene {
       // this.load.image('virus3', './assets/Virus03.png');
       // this.load.image('virus4', './assets/Virus04.png');
       // this.load.image('virus5', './assets/Virus05.png');
-      this.load.image('platform', './assets/ground02.png');
-      this.load.image('platform2', './assets/ground03.png');
+      this.load.image('platform', './assets/ground04.png');
+      this.load.image('platform2', './assets/ground04.png');
       // this.load.image('player', './assets/player.png');
       this.load.spritesheet('player', 
       './assets/avatar-face.png',
       { frameWidth: 125, frameHeight: 201 }
     );
-      this.load.image('background', './assets/background05-450x500.png');
+      this.load.image('background', './assets/background06.png');
       this.load.image('heart', './assets/heart07.png');
 
 
@@ -97,7 +97,7 @@ class GameScene extends Phaser.Scene {
   
       platforms.create(225, 495, 'platform').setScale(1, .3).refreshBody();
 
-      platforms.create(225, 480, 'platform2').setScale(1, .5).refreshBody();
+      platforms.create(225, 480, 'platform2').setScale(1, .7).refreshBody();
   
       gameState.scoreText = this.add.text(340, 470, 'Score: 0', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
       gameState.livesText = this.add.text(42, 470, 'Lives: 10', { fontFamily: 'Arial', fontSize: '20px', fill: '#ffee79' });
@@ -134,7 +134,7 @@ class GameScene extends Phaser.Scene {
       const virusGenerator = () => {
         const xCoord = Math.random() * 540
         let randomVirus = virusList[Math.floor(Math.random() * 2)]
-        viruses.create(xCoord, 15, randomVirus).setScale(.2).setAlpha(0) 
+        viruses.create(xCoord, 15, randomVirus).setScale(.3).setAlpha(0) 
         
         this.tweens.add({
           targets: viruses.getChildren(), 
