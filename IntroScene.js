@@ -75,7 +75,52 @@ class IntroScene extends Phaser.Scene {
               duration: 3000,
               ease: 'Power3'
           });
-    
+
+          this.add.rectangle(50, 200, 350, 148, '#000000', 0.5).setOrigin(0, 0);
+          this.add.text(215, 220, `Leader board:`, { fill: '#fffb22', fontSize: '22px '}).setOrigin(0.5, 0.5);
+          
+      let scores = fetch(`https://wbs-final-game-back.herokuapp.com/api/scores/Virus Invaders`)
+      .then((response) => response.json())
+      .then(scores => {
+        console.log(scores)
+        // let player1 = `${(scores[0].playerName)}  ${(scores[0].score)}`;
+        // console.log(player1)
+        gameState.bestScorePlayer1 = (scores[0].score);
+        gameState.bestScorePlayer1Name = (scores[0].playerName);
+        gameState.bestScorePlayer2 = (scores[1].score);
+        gameState.bestScorePlayer2Name = (scores[1].playerName);
+        gameState.bestScorePlayer3 = (scores[2].score);
+        gameState.bestScorePlayer3Name = (scores[2].playerName);
+        console.log('more stuff to log')
+        console.log(gameState.bestScorePlayer1);
+        console.log(gameState.bestScorePlayer1Name);
+      
+        this.add.text(70, 255, `${gameState.bestScorePlayer1Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(240, 255, `${gameState.bestScorePlayer1}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(310, 255, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+      
+        this.add.text(70, 285, `${gameState.bestScorePlayer2Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(240, 285, `${gameState.bestScorePlayer2}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(310, 285, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+      
+        this.add.text(70, 315, `${gameState.bestScorePlayer3Name} `, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(240, 315, `${gameState.bestScorePlayer3}`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        this.add.text(310, 315, `points`, { fill: '#fcff95', fontSize: '20px '}).setOrigin(0, 0.5);
+        
+        })
+      // .then(data => console.log(data))
+      // console.log(`from fetch request ${scores}`)
+      .catch((error) => console.log(`That is why: ${error}`));
+      
+      
+      console.log(gameState.bestScorePlayer1);
+      console.log('sfter fetch and checking GameState');
+      // fetch(`http://localhost:5000/api/scores/${gameState.gameName}`)
+      
+      const api_url = 
+            "https://wbs-final-game-back.herokuapp.com/api/scores/Angry Viruses";
+          
+        
     }
     
     update() {
